@@ -1,0 +1,27 @@
+site_name: FreshRSS for Mere Mortals
+site_description: Plain-language self-hosted feed reading with FreshRSS. Your subscriptions on your own server, read in a browser or a phone app, with the moving parts, a scripted install, everyday reading, the Google Reader API, OPML moves, and the backup that is one folder.
+site_url: https://paulsullivan33-dev.github.io/freshrss-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What FreshRSS Is: what-freshrss-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing: installing.md
+  - First User and First Feeds: first-user-and-feeds.md
+  - Reading Every Day: reading-every-day.md
+  - Organising Feeds: organising-feeds.md
+  - Keeping Feeds Fresh: keeping-feeds-fresh.md
+  - The API and Clients: the-api-and-clients.md
+  - Sharing and Extensions: sharing-and-extensions.md
+  - Backing Up: backing-up.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

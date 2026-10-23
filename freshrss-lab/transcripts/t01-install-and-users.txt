@@ -1,0 +1,27 @@
+$ php cli/do-install.php --default-user=marta --environment=production \
+    --base-url=http://localhost:8080/ --language=en --title=FreshRSS \
+    --auth-type=form --api-enabled --db-type=sqlite
+FreshRSS install…
+ℹ️ Remember to create the default user: marta	./cli/create-user.php --user marta --password 'password' --more-options
+ℹ️ Remember to re-apply the appropriate access rights, such as:	sudo cli/access-permissions.sh
+
+$ php cli/create-user.php --user marta --password ******** \
+    --api-password ******** --email marta@example.com --language en --no-default-feeds
+FreshRSS creating user “marta”…
+ℹ️ Remember to refresh the feeds of the user: marta	./cli/actualize-user.php --user marta
+ℹ️ Remember to re-apply the appropriate access rights, such as:	sudo cli/access-permissions.sh
+
+$ php cli/create-user.php --user kenji --password ******** \
+    --api-password ******** --email kenji@example.com --language en --no-default-feeds
+FreshRSS creating user “kenji”…
+ℹ️ Remember to refresh the feeds of the user: kenji	./cli/actualize-user.php --user kenji
+ℹ️ Remember to re-apply the appropriate access rights, such as:	sudo cli/access-permissions.sh
+
+$ ls data/users/
+_
+index.html
+kenji
+marta
+
+$ php cli/user-info.php --user marta
+*       | marta                |       | *       | 1792716588                | 110592          | 1          | 0          | 0          | 0          | 0          | 0          | en    | marta@example.com

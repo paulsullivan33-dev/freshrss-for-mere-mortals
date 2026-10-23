@@ -1,0 +1,62 @@
+FreshRSS commands — the cheat sheet
+====================================================================
+All commands run from the FreshRSS folder
+(the one holding cli/, app/, data/).
+Transcripts of the starred runs live in
+freshrss-lab/transcripts/.
+
+Install and first reader (chapter 3, 4)
+*   php cli/do-install.php --default-user=marta \
+      --environment=production \
+      --base-url=http://localhost:8080/ \
+      --language=en --title=FreshRSS \
+      --auth-type=form --api-enabled \
+      --db-type=sqlite
+*   php cli/create-user.php --user marta \
+      --password <hers> --api-password <a different one> \
+      --email marta@example.com --language en \
+      --no-default-feeds     (drop the flag for starter feeds)
+    php cli/create-user.php --user kenji ... (the next reader)
+    php cli/list-users.php
+    php cli/user-info.php --user marta
+    php cli/health.php
+
+Serving (chapter 3; the lab's deviation)
+    php -S localhost:8080 -t p
+      (development server only — a standing
+      install uses Apache/nginx at p/)
+
+Feeds in, articles flowing (chapters 4, 7)
+*   php cli/import-for-user.php --user marta \
+      --filename sample-subscriptions.opml
+*   php cli/actualize-user.php --user marta
+    php cli/actualize-user.php --user marta --feed-id 3
+    php app/actualize_script.php        (every user; the cron one)
+
+The cron line (chapter 7)
+    */20 * * * * php /path/to/FreshRSS/app/actualize_script.php
+
+Feeds on your own network (chapters 11, 14)
+    INTERNAL_HOST_ALLOWLIST='127.0.0.1:8099' \
+      php cli/actualize-user.php --user marta
+      (host:port pairs or CIDRs; set it for the
+      web server AND cron — separate processes)
+
+The Google Reader API (chapter 8)
+*   POST /api/greader.php/accounts/ClientLogin
+      Email=<user>&Passwd=<API password>  -> Auth= token
+*   GET  /api/greader.php/reader/api/0/unread-count?output=json
+*   GET  /api/greader.php/reader/api/0/stream/contents/
+           user/-/state/com.google/reading-list
+           ?xt=user/-/state/com.google/read&n=50&output=json
+*   GET  /api/greader.php/reader/api/0/token  -> edit token
+*   POST /api/greader.php/reader/api/0/edit-tag
+      i=<item id>&a=user/-/state/com.google/read&T=<token>
+      (all with header: Authorization: GoogleLogin auth=<Auth>)
+
+OPML and backups (chapters 4, 10)
+*   php cli/export-opml-for-user.php --user marta > subs.opml
+    php cli/import-for-user.php --user kenji --filename subs.opml
+    cp -a data/ /somewhere/else/        (the backup)
+    sqlite3 data/users/marta/db.sqlite \
+      "SELECT COUNT(*) FROM entry;"     (open the copy, count)

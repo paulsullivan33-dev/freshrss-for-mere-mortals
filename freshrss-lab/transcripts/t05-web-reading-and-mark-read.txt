@@ -1,0 +1,13 @@
+$ # The reading page shows (44) in its title — 44 unread.
+$ grep -o "<title>(44)  · FreshRSS</title>" stream page -> found
+
+$ POST /i/?c=entry&a=read&id=1792716759560094   (Sowing Broad Beans…, the web read toggle)
+HTTP 302
+
+$ # Re-fetch the reading page:
+<title>(43)  · FreshRSS</title>
+
+$ sqlite3 db: is_read for that entry, and unread totals
+1792716759560094|1|Sowing Broad Beans Before the First Frost
+BBC News - World|39
+The Allotment Journal|4

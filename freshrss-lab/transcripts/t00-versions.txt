@@ -1,0 +1,18 @@
+$ php -v | head -1
+PHP 8.3.6 (cli) (built: Oct 19 2026 15:16:58) (NTS)
+
+$ grep FRESHRSS_VERSION app/constants.php
+const FRESHRSS_VERSION = '1.30.4';
+
+$ sha256sum downloads/FreshRSS-1.30.4.tar.gz
+4c750c794479e6158bfb4f970050a7083f4e3afdbaea3bc6063aba3a5df8d01d  downloads/FreshRSS-1.30.4.tar.gz
+
+$ php -m | grep -i -E "pdo|sqlite"
+PDO
+pdo_sqlite
+
+$ ls app/data/users/marta/
+config.php
+config.php.bak.php
+db.sqlite
+log.txt

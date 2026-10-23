@@ -1,0 +1,14 @@
+$ # The same two articles in both databases. Marta read
+$ # "Sowing Broad Beans" on the web (t05) and "A Simple Cold
+$ # Frame" through the API (t08). Kenji only just imported.
+$ sqlite3 <each user db> "SELECT is_read FROM entry WHERE title LIKE ..."
+-- marta:
+  A Simple Cold Frame from Scrap Timber  is_read=1
+  Sowing Broad Beans Before the First Fr  is_read=1
+-- kenji:
+  A Simple Cold Frame from Scrap Timber  is_read=0
+  Sowing Broad Beans Before the First Fr  is_read=0
+
+$ # Totals: entries and unread, per user
+  marta: 44 entries, 42 unread
+  kenji: 44 entries, 44 unread

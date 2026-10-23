@@ -1,0 +1,7 @@
+login page title: <title>Login · FreshRSS</title>
+csrf token: b563f0c122fcc5da… (truncated)
+nonce endpoint: {"salt1":"$2y$09$KDAXGFAEjCs8Q\/5gSSO9I.","nonce":"fa023465a6a485767d075bfb52990… (truncated)
+login POST: HTTP 302 -> http://localhost:8080/i/?rid=6adaaf39dc69c
+after login, home page title: <title>FreshRSS</title>
+logout link present: 2
+page names the user: marta

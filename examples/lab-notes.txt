@@ -1,0 +1,89 @@
+The lab — one PHP application, two invented readers
+====================================================================
+
+The lab is the project's own software,
+installed the plain way and fed a diet of
+one real feed and one invented one.
+
+What was installed, exactly:
+
+    FreshRSS            1.30.4 (official release archive,
+                        sha256 4c750c79…, from the project's
+                        GitHub releases; the release ships
+                        no binary assets, the source archive
+                        is the download)
+    PHP                 8.3.6, with pdo_sqlite
+    Database            SQLite — one db.sqlite per reader
+    Web server          PHP's built-in server (php -S),
+                        declared deviation; see below
+
+Two readers were created with the CLI —
+Marta Ellison (marta@example.com), the
+default user, and Kenji Mori
+(kenji@example.com) — both invented, both
+with a web password and a separate API
+password, both created with
+--no-default-feeds so their subscription
+lists would be exactly what the lab put
+there. Passwords and tokens are redacted
+in every transcript.
+
+What the lab did, in one breath: imported
+examples/sample-subscriptions.opml for
+Marta (the BBC's public world feed and
+The Allotment Journal, an invented feed
+served by a plain Python file server on
+the same machine), actualized, and read.
+The BBC delivered 39 articles; the
+Allotment Journal, after the fix below,
+delivered its 5. One article was marked
+read on the web page (the unread ruler
+fell 44 → 43) and one through the Google
+Reader API (43 → 42). Marta's OPML export
+was imported for Kenji, who actualized to
+the same 44 articles, every one unread
+for him — his copies of the two articles
+Marta had read showed is_read=0 against
+her is_read=1. Eleven transcripts
+(t00–t10) hold the output.
+
+The lab's two honest wrinkles:
+
+  * The bench machine was rebuilt
+    mid-lab (its first incarnation had
+    PHP and MariaDB but no SQLite
+    driver; the replacement had neither
+    until PHP was installed from the
+    distro archive). The first run
+    therefore used MariaDB; every
+    transcript in this guide comes from
+    the final SQLite run, which the
+    chapters describe. Nothing is
+    claimed from the lost run except
+    this sentence.
+
+  * The fixture feed failed twice
+    before it worked, and both failures
+    are FreshRSS working as designed.
+    First, FreshRSS resolves feed
+    hostnames itself (real DNS, no
+    /etc/hosts) and this bench's DNS is
+    intercepted — "localhost" resolved
+    to 198.18.8.20, and the pinned
+    connection was reset (cURL error
+    56). Second, with the literal
+    127.0.0.1 address, the anti-SSRF
+    allowlist refused the private IP
+    until INTERNAL_HOST_ALLOWLIST=
+    '127.0.0.1:8099' was set — as a
+    host:port pair; a bare IP does not
+    match. Transcript t04 is the whole
+    story; chapter 14 is its moral.
+
+Not on the bench, and so not claimed
+anywhere: a phone or any client app,
+the Docker image, a second web server,
+an extension, a theme change, WebSub
+(no public endpoint), and a full
+folder-restore (the OPML net was the
+restore path actually exercised).

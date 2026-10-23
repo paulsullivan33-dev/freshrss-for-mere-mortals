@@ -1,0 +1,12 @@
+$ # The Google Reader API speaks first: ClientLogin with the
+$ # user's API password (a separate password, set per user —
+$ # Marta's was set at creation time by cli/create-user.php).
+$ POST /api/greader.php/accounts/ClientLogin
+$   Email=marta&Passwd=<api password>
+SID=marta/e73ecafdcddd4c5b2f590f1ebf630c07e26d73c9
+LSID=null
+Auth=marta/e73ecafd… (truncated; sent back as the header
+     "Authorization: GoogleLogin auth=<Auth>" on every call)
+
+$ GET /api/greader.php/reader/api/0/token
+e73ecafdcddd4c5b2f59… (the edit token, used by t08)

@@ -1,0 +1,20 @@
+$ # Mark the first stream item read, through the API alone.
+$ # (edit-tag needs the token from GET /reader/api/0/token,
+$ #  fetched with the same Authorization header.)
+$ POST /api/greader.php/reader/api/0/edit-tag
+$   i=tag:google.com,2005:reader/item/00065e7765a2ef9d
+$   a=user/-/state/com.google/read
+$   T=<token>
+OK
+
+$ # Unread counts afterwards:
+max: 42
+  feed/3 3                                    <- was 4
+  user/-/label/Gardening 3
+  feed/1 39
+  user/-/label/News 39
+  user/-/state/com.google/reading-list 42     <- was 43
+
+The item marked was "A Simple Cold Frame from Scrap Timber".
+Between the web toggle (t05) and this call, two of Marta's
+44 articles are now read, each by a different road in.

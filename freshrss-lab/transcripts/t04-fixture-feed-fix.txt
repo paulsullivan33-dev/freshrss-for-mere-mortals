@@ -1,0 +1,51 @@
+The fixture feed arrived empty (see t03): the BBC feed
+actualized, The Allotment Journal did not. Marta's own log
+(data/users/marta/log.txt) said why, in two instalments.
+
+First failure — the feed's address was a name, not a number:
+
+  [warning] --- cURL error 56: Recv failure: Connection reset
+  by peer [http://localhost:8099/allotment-journal.xml]
+
+FreshRSS does not let the system resolver answer for it: it
+resolves feed hostnames itself (app/Utils/httpUtil.php,
+getCurlResolveInfo) and pins the answer, as an anti-SSRF
+measure. On this bench the DNS service is intercepted:
+
+  $ php -r 'var_dump(array_column(
+      dns_get_record("localhost", DNS_A) ?: [], "ip"));'
+  => "198.18.8.20"        (not 127.0.0.1)
+
+so FreshRSS pinned "localhost" to 198.18.8.20, where nothing
+listens, and the connection was reset. Ordinary curl, which
+reads /etc/hosts, reached the fixture server every time —
+which is what made this confusing for twenty minutes.
+
+Second failure — with the OPML corrected to the literal
+address http://127.0.0.1:8099/allotment-journal.xml:
+
+  [warning] --- Fetching this URL is not allowed, because the
+  host's IP is not in the allowlist [http://127.0.0.1:8099/]
+
+FreshRSS refuses to fetch private or reserved addresses
+unless they are allowlisted — the same SSRF guard, second
+door. The allowlist (system setting internal_host_allowlist,
+or the INTERNAL_HOST_ALLOWLIST environment variable) takes
+host:port pairs or CIDR ranges; a bare IP does not match.
+
+The fix, and the re-run:
+
+  $ INTERNAL_HOST_ALLOWLIST='127.0.0.1:8099' \
+      php cli/actualize-user.php --user marta --feed-id 3
+  FreshRSS actualizing user "marta"…
+  FreshRSS actualized 1 feeds for marta (5 new articles)
+
+  $ sqlite3 data/users/marta/db.sqlite
+      "SELECT f.name, COUNT(e.id), SUM(e.is_read=0)
+       FROM feed f LEFT JOIN entry e ON e.id_feed=f.id
+       GROUP BY f.id"
+  BBC News - World|39|39
+  The Allotment Journal|5|5
+
+Both feeds in: 39 real articles from the BBC's public feed,
+5 invented ones from the fixture on the same machine.

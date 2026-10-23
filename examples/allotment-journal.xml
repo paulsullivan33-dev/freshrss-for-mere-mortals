@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Allotment Journal</title>
+    <link>http://127.0.0.1:8099/</link>
+    <description>Notes from a small vegetable plot, written by Priya Nair. Sowing, saving, and eating, in that order.</description>
+    <language>en-gb</language>
+    <atom:link href="http://127.0.0.1:8099/allotment-journal.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sowing Broad Beans Before the First Frost</title>
+      <link>http://127.0.0.1:8099/posts/broad-beans-before-frost.html</link>
+      <guid isPermaLink="false">allotment-journal-2026-10-21-beans</guid>
+      <pubDate>Wed, 21 Oct 2026 07:30:00 GMT</pubDate>
+      <description>The old advice says sow in October and let the winter do the hardening. This year the plot gets two rows of Aquadulce, a fleece on standby, and a note in the diary to compare germination against the spring-sown row.</description>
+    </item>
+    <item>
+      <title>A Simple Cold Frame from Scrap Timber</title>
+      <link>http://127.0.0.1:8099/posts/cold-frame-scrap-timber.html</link>
+      <guid isPermaLink="false">allotment-journal-2026-10-18-frame</guid>
+      <pubDate>Sun, 18 Oct 2026 09:15:00 GMT</pubDate>
+      <description>Four offcuts, one salvaged window, and an hour with a drill. The frame is not beautiful, but the lettuce seedlings inside it are two weeks ahead of the ones on the windowsill.</description>
+    </item>
+    <item>
+      <title>Saving Tomato Seed on Kitchen Paper</title>
+      <link>http://127.0.0.1:8099/posts/saving-tomato-seed.html</link>
+      <guid isPermaLink="false">allotment-journal-2026-10-14-tomato</guid>
+      <pubDate>Wed, 14 Oct 2026 18:45:00 GMT</pubDate>
+      <description>Ferment the seeds three days, rinse, and dry them spread on labelled kitchen paper. Next spring the paper tears into strips and goes straight into the compost-filled modules, seeds and all.</description>
+    </item>
+    <item>
+      <title>The October Jobs List</title>
+      <link>http://127.0.0.1:8099/posts/october-jobs-list.html</link>
+      <guid isPermaLink="false">allotment-journal-2026-10-05-jobs</guid>
+      <pubDate>Mon, 05 Oct 2026 08:00:00 GMT</pubDate>
+      <description>Lift the last potatoes, mulch the empty beds, plant the garlic, and order the seed catalogues before the good varieties sell out. October is the plot's quiet hinge between harvest and planning.</description>
+    </item>
+    <item>
+      <title>Why the Compost Heap Smells, and How to Fix It</title>
+      <link>http://127.0.0.1:8099/posts/compost-heap-smells.html</link>
+      <guid isPermaLink="false">allotment-journal-2026-09-28-compost</guid>
+      <pubDate>Mon, 28 Sep 2026 12:20:00 GMT</pubDate>
+      <description>A heap that smells of ammonia is asking for carbon, not sympathy. Two barrowloads of shredded cardboard, one thorough turning, and the balance is back.</description>
+    </item>
+  </channel>
+</rss>

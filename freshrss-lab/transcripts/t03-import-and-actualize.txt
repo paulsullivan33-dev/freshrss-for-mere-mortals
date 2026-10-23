@@ -1,0 +1,6 @@
+$ php cli/import-for-user.php --user marta --filename sample-subscriptions.opml
+FreshRSS importing ZIP/OPML/JSON/TXT for user “marta”…
+
+$ php cli/actualize-user.php --user marta
+FreshRSS actualizing user “marta”…
+FreshRSS actualized 1 feeds for marta (39 new articles)

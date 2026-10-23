@@ -1,0 +1,15 @@
+$ php cli/export-opml-for-user.php --user marta > marta-export.opml
+$ grep -o xmlUrl=... marta-export.opml
+xmlUrl="https://feeds.bbci.co.uk/news/world/rss.xml"
+xmlUrl="http://127.0.0.1:8099/allotment-journal.xml"
+
+$ php cli/import-for-user.php --user kenji --filename marta-export.opml
+FreshRSS importing ZIP/OPML/JSON/TXT for user “kenji”…
+
+$ INTERNAL_HOST_ALLOWLIST=127.0.0.1:8099 php cli/actualize-user.php --user kenji
+FreshRSS actualizing user “kenji”…
+FreshRSS actualized 2 feeds for kenji (44 new articles)
+
+$ sqlite3 data/users/kenji/db.sqlite — his feeds and counts
+BBC News - World|39|39
+The Allotment Journal|5|5

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Sample subscriptions for the FreshRSS lab</title>
+    <dateCreated>Thu, 22 Oct 2026 12:00:00 GMT</dateCreated>
+  </head>
+  <body>
+    <outline text="News">
+      <outline type="rss" text="BBC News - World" title="BBC News - World"
+               xmlUrl="https://feeds.bbci.co.uk/news/world/rss.xml"
+               htmlUrl="https://www.bbc.co.uk/news/world" />
+    </outline>
+    <outline text="Gardening">
+      <outline type="rss" text="The Allotment Journal" title="The Allotment Journal"
+               xmlUrl="http://127.0.0.1:8099/allotment-journal.xml"
+               htmlUrl="http://127.0.0.1:8099/" />
+    </outline>
+  </body>
+</opml>

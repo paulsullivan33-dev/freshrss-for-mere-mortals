@@ -1,0 +1,26 @@
+$ # Unread counts through the API agree with the web page
+$ GET /api/greader.php/reader/api/0/unread-count?output=json
+{
+    "max": 43,
+    "unreadcounts": [
+        { "id": "feed/3", "count": 4, ... },          <- The Allotment Journal
+        { "id": "user/-/label/Gardening", "count": 4, ... },
+        { "id": "feed/1", "count": 39, ... },         <- BBC News - World
+        { "id": "user/-/label/News", "count": 39, ... },
+        { "id": "user/-/state/com.google/reading-list", ... }
+    ]
+}
+
+$ # The unread stream itself (xt = exclude read):
+$ GET /api/greader.php/reader/api/0/stream/contents/user/-/state/com.google/reading-list
+$     ?xt=user/-/state/com.google/read&n=50&output=json
+stream items returned: 43
+ id: tag:google.com,2005:reader/item/00065e7765a2ef9d
+ title: A Simple Cold Frame from Scrap Timber
+ origin: The Allotment Journal | categories: ['reading-list', 'Gardening', 'main']
+ id: tag:google.com,2005:reader/item/00065e7765a2ef9c
+ title: Saving Tomato Seed on Kitchen Paper
+ origin: The Allotment Journal | categories: ['reading-list', 'Gardening', 'main']
+ id: tag:google.com,2005:reader/item/00065e7765a2ef9b
+ title: The October Jobs List
+ origin: The Allotment Journal | categories: ['reading-list', 'Gardening', 'main']

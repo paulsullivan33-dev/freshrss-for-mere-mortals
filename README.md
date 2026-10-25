@@ -133,3 +133,19 @@ export there, import here, done. The
 lab's transcripts live in
 `freshrss-lab/transcripts/`; its notes
 are `examples/lab-notes.txt`.
+
+---
+
+## Part of the series
+
+This guide is one of the [For Mere Mortals](https://paulsullivan33-dev.github.io/mere-mortals/) guides: plain-language guides to the tools programmers and makers use.
+
+Related guides:
+
+- [SearXNG for Mere Mortals](https://paulsullivan33-dev.github.io/searxng-for-mere-mortals/)
+- [Docker Compose for Mere Mortals](https://paulsullivan33-dev.github.io/docker-compose-for-mere-mortals/)
+- [Caddy for Mere Mortals](https://paulsullivan33-dev.github.io/caddy-for-mere-mortals/)
+
+## License
+
+The writing in this guide is licensed under [CC BY 4.0](https://github.com/paulsullivan33-dev/freshrss-for-mere-mortals/blob/main/LICENSE). Code examples and lab scripts are licensed under the [MIT License](https://github.com/paulsullivan33-dev/freshrss-for-mere-mortals/blob/main/LICENSE-CODE).

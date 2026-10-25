@@ -1,6 +1,7 @@
 site_name: FreshRSS for Mere Mortals
 site_description: Plain-language self-hosted feed reading with FreshRSS. Your subscriptions on your own server, read in a browser or a phone app, with the moving parts, a scripted install, everyday reading, the Google Reader API, OPML moves, and the backup that is one folder.
 site_url: https://paulsullivan33-dev.github.io/freshrss-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
 
 # Guides live at the repo root (nice for GitHub browsing).
 # The deploy workflow copies them into docs/ before building.
